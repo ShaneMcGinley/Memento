@@ -1,35 +1,28 @@
 @startuml
 skinparam classAttributeIconSize 0
 
-class CharacterInfo {
+class CharacterState {
 - name : String
-- expLevel : String
+- expLevel : int
 - location : String
-
-+ displayCharacterInfo(weapon : Weapon)
 }
 
-class SavingCharacter {
+class CharacterStateSave {
 - nameCopy : String
-- expLevelCopy : String
+- expLevelCopy : int
 - locationCopy : String
 - weaponNameCopy : String
 - weaponTypeCopy : WeaponType
 
-+ save(characterInfo : CharacterInfo, weapon : Weapon)
-+ restoreToPreviousSave(characterInfo : CharacterInfo, weapon : Weapon)
++ save(characterState : CharacterInfo, weapon : Weapon)
++ restoreToPreviousSave(characterState : CharacterInfo, weapon : Weapon)
++ displayCharacterInfo(weapon : Weapon)
 }
 
 class Weapon {
 - weaponName : String
 - weaponType : WeaponType
 }
-
-Weapon --|> WeaponType : uses
-Weapon <|-- CharacterInfo : uses
-Weapon <|-- SavingCharacter : uses
-WeaponType <|-- SavingCharacter : uses
-CharacterInfo <|-- SavingCharacter : uses
 
 enum WeaponType {
 ASSAULT_RIFLE
@@ -38,5 +31,12 @@ SNIPER_RIFLE
 SHOTGUN
 KNIFE
 }
+
+Weapon --|> WeaponType : uses
+Weapon <|-- CharacterState : uses
+Weapon <|-- CharacterStateSave : uses
+WeaponType <|-- CharacterStateSave : uses
+CharacterState <|-- CharacterStateSave : uses
+
 
 @enduml
