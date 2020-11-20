@@ -1,10 +1,13 @@
 @startuml
 skinparam classAttributeIconSize 0
 
-class CharacterState {
+class Character {
 - name : String
 - expLevel : int
 - location : String
+- weaponName : String
+- WeaponType : WeaponType
+
 }
 
 class CharacterStateSave {
@@ -14,14 +17,18 @@ class CharacterStateSave {
 - weaponNameCopy : String
 - weaponTypeCopy : WeaponType
 
-+ saveState(characterState : CharacterState, weapon : Weapon)
-+ restoreToSavedState(characterState : CharacterState, weapon : Weapon)
-+ displayFullCharacterState(characterState CharacterState, weapon : Weapon)
++ saveState(character : Character)
++ restoreToSavedState(character : Character)
++ displayFullCharacterState(character Character)
 }
 
-class Weapon {
-- weaponName : String
-- weaponType : WeaponType
+note right {
+- Sets variables using the values
+  in Character and sets Weapon
+  to the copy variables.
+- Also reverses the above to restore objects.
+- Each method requires two parameters
+  -> character and weapon
 }
 
 enum WeaponType {
@@ -32,11 +39,8 @@ SHOTGUN
 KNIFE
 }
 
-Weapon --|> WeaponType : uses
-Weapon <|-- CharacterState : uses
-Weapon <|-- CharacterStateSave : uses
-WeaponType <|-- CharacterStateSave : uses
-CharacterState <|-- CharacterStateSave : uses
-
+Character .|> WeaponType : uses
+WeaponType <|.. CharacterStateSave : uses
+Character <|.. CharacterStateSave : uses
 
 @enduml

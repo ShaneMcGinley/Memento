@@ -48,26 +48,26 @@ public class CharacterStateSave {
         this.locationCopy = locationCopy;
     }
 
-    public void save(CharacterState characterState, Weapon weapon){
+    public void save(Character character){
         System.out.println("Saving Game\n");
-        setNameCopy(characterState.getName());
-        setExpLevelCopy(characterState.getExpLevel());
-        setLocationCopy(characterState.getLocation());
-        setWeaponNameCopy(weapon.getWeaponName());
-        setWeaponTypeCopy(weapon.getWeaponType());
+        setNameCopy(character.getName());
+        setExpLevelCopy(character.getExpLevel());
+        setLocationCopy(character.getLocation());
+        setWeaponNameCopy(character.getWeaponName());
+        setWeaponTypeCopy(character.getWeaponType());
     }
 
-    public void restoreToPreviousSave(CharacterState characterState, Weapon weapon){
+    public void restoreToPreviousSave(Character character){
         System.out.println("Your character has died, reloading the last saved checkpoint.\n");
-        characterState.setName(nameCopy);
-        characterState.setExpLevel(expLevelCopy);
-        characterState.setLocation(locationCopy);
-        weapon.setWeaponName(weaponNameCopy);
-        weapon.setWeaponType(weaponTypeCopy);
+        character.setName(nameCopy);
+        character.setExpLevel(expLevelCopy);
+        character.setLocation(locationCopy);
+        character.setWeaponName(weaponNameCopy);
+        character.setWeaponType(weaponTypeCopy);
     }
 
-    public void displayCharacterState(CharacterState characterState, Weapon weapon){
-        System.out.println("Character Details: \nPlayer Name: " + characterState.getName() + "\nExperience Level: " + characterState.getExpLevel() + "\nSave Location: " + characterState.getLocation() + "\nWeapon Name: " + weapon.getWeaponName() + "\nWeapon Type: " + weapon.getWeaponType() +"\n");
+    public void displayCharacterState(Character character){
+        System.out.println("Character Details: \nPlayer Name: " + character.getName() + "\nExperience Level: " + character.getExpLevel() + "\nSave Location: " + character.getLocation() + "\nWeapon Name: " + character.getWeaponName() + "\nWeapon Type: " + character.getWeaponType() +"\n");
     }
 
 }
