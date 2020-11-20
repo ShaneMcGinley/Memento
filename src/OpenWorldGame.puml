@@ -14,9 +14,9 @@ class CharacterStateSave {
 - weaponNameCopy : String
 - weaponTypeCopy : WeaponType
 
-+ save(characterState : CharacterInfo, weapon : Weapon)
-+ restoreToPreviousSave(characterState : CharacterInfo, weapon : Weapon)
-+ displayCharacterInfo(weapon : Weapon)
++ saveState(characterState : CharacterState, weapon : Weapon)
++ restoreToSavedState(characterState : CharacterState, weapon : Weapon)
++ displayFullCharacterState(characterState CharacterState, weapon : Weapon)
 }
 
 class Weapon {
