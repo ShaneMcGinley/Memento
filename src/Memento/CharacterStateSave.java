@@ -57,6 +57,15 @@ public class CharacterStateSave {
         setWeaponTypeCopy(character.getWeaponType());
     }
 
+    public void saveCharacterState(Character character){
+        System.out.println("Saving Current Character State\n");
+        setNameCopy(character.getName());
+        setExpLevelCopy(character.getExpLevel());
+        setLocationCopy(character.getLocation());
+        setWeaponNameCopy(character.getWeaponName());
+        setWeaponTypeCopy(character.getWeaponType());
+    }
+
     public void restoreToPreviousSave(Character character){
         System.out.println("Your character has died, reloading the last saved checkpoint.\n");
         character.setName(nameCopy);
@@ -66,8 +75,11 @@ public class CharacterStateSave {
         character.setWeaponType(weaponTypeCopy);
     }
 
-    public void displayCharacterState(Character character){
-        System.out.println("Character Details: \nPlayer Name: " + character.getName() + "\nExperience Level: " + character.getExpLevel() + "\nSave Location: " + character.getLocation() + "\nWeapon Name: " + character.getWeaponName() + "\nWeapon Type: " + character.getWeaponType() +"\n");
+    public void displayCharacterState(Character character,String name, int expLevel,
+                                      String location, String weaponName, String weaponType){
+        System.out.println("Character Details: \nPlayer Name: " + character.getName()
+                + "\nExperience Level: " + character.getExpLevel() + "\nSave Location: "
+                + character.getLocation() + "\nWeapon Name: " + character.getWeaponName()
+                + "\nWeapon Type: " + character.getWeaponType() +"\n");
     }
-
 }

@@ -18,8 +18,10 @@ class CharacterStateSave {
 - weaponTypeCopy : WeaponType
 
 + saveState(character : Character)
++ saveCharacterState(character : Character)
 + restoreToSavedState(character : Character)
-+ displayFullCharacterState(character Character)
++ displayFullCharacterState(character Character. name : String, expLevel : int,
+location : String, weaponName : String, weaponType : String)
 }
 
 note right {
