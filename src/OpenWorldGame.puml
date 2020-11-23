@@ -6,7 +6,7 @@ class Character {
 - expLevel : int
 - location : String
 - weaponName : String
-- WeaponType : WeaponType
+- weaponType : WeaponType
 
 }
 
@@ -18,10 +18,8 @@ class CharacterStateSave {
 - weaponTypeCopy : WeaponType
 
 + saveState(character : Character)
-+ saveCharacterState(character : Character)
 + restoreToSavedState(character : Character)
-+ displayFullCharacterState(character Character. name : String, expLevel : int,
-location : String, weaponName : String, weaponType : String)
++ displayFullCharacterState(character Character)
 }
 
 note right {
@@ -29,20 +27,31 @@ note right {
   in Character and sets Weapon
   to the copy variables.
 - Also reverses the above to restore objects.
-- Each method requires two parameters
-  -> character and weapon
+- Each method requires one parameter
+  -> character.
 }
 
-enum WeaponType {
-ASSAULT_RIFLE
-SUBMACHINE_GUN
-SNIPER_RIFLE
-SHOTGUN
-KNIFE
+class WeaponType {
++ ASSAULT_RIFLE : String
++ SUBMACHINE_GUN : String
++ SNIPER_RIFLE : String
++ SHOTGUN : String
++ KNIFE : String
 }
 
-Character .|> WeaponType : uses
-WeaponType <|.. CharacterStateSave : uses
+class Location {
++ WHD : String
++ WHM : String
++ WRN : String
++ KL : String
++ WF : String
+}
+
+note right {
+- Final String for each
+  Location.
+}
+
 Character <|.. CharacterStateSave : uses
 
 @enduml

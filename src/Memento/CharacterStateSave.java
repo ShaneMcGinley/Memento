@@ -6,7 +6,15 @@ public class CharacterStateSave {
     private int expLevelCopy;
     private String locationCopy;
     private String weaponNameCopy;
-    private WeaponType weaponTypeCopy;
+    private String weaponType;
+
+    public String getWeaponType() {
+        return weaponType;
+    }
+
+    public void setWeaponType(String weaponType) {
+        this.weaponType = weaponType;
+    }
 
     public String getWeaponNameCopy() {
         return weaponNameCopy;
@@ -14,14 +22,6 @@ public class CharacterStateSave {
 
     public void setWeaponNameCopy(String weaponNameCopy) {
         this.weaponNameCopy = weaponNameCopy;
-    }
-
-    public WeaponType getWeaponTypeCopy() {
-        return weaponTypeCopy;
-    }
-
-    public void setWeaponTypeCopy(WeaponType weaponTypeCopy) {
-        this.weaponTypeCopy = weaponTypeCopy;
     }
 
     public String getNameCopy() {
@@ -54,7 +54,7 @@ public class CharacterStateSave {
         setExpLevelCopy(character.getExpLevel());
         setLocationCopy(character.getLocation());
         setWeaponNameCopy(character.getWeaponName());
-        setWeaponTypeCopy(character.getWeaponType());
+        setWeaponType(character.getWeaponType());
     }
 
     public void saveCharacterState(Character character){
@@ -63,7 +63,7 @@ public class CharacterStateSave {
         setExpLevelCopy(character.getExpLevel());
         setLocationCopy(character.getLocation());
         setWeaponNameCopy(character.getWeaponName());
-        setWeaponTypeCopy(character.getWeaponType());
+        setWeaponType(character.getWeaponType());
     }
 
     public void restoreToPreviousSave(Character character){
@@ -72,11 +72,10 @@ public class CharacterStateSave {
         character.setExpLevel(expLevelCopy);
         character.setLocation(locationCopy);
         character.setWeaponName(weaponNameCopy);
-        character.setWeaponType(weaponTypeCopy);
+        character.setWeaponType(weaponType);
     }
 
-    public void displayCharacterState(Character character,String name, int expLevel,
-                                      String location, String weaponName, String weaponType){
+    public void displayCharacterState(Character character){
         System.out.println("Character Details: \nPlayer Name: " + character.getName()
                 + "\nExperience Level: " + character.getExpLevel() + "\nSave Location: "
                 + character.getLocation() + "\nWeapon Name: " + character.getWeaponName()
