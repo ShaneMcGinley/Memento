@@ -17,18 +17,22 @@ class CharacterStateSave {
 - weaponNameCopy : String
 - weaponTypeCopy : WeaponType
 
-+ saveState(character : Character)
-+ restoreToSavedState(character : Character)
-+ displayFullCharacterState(character Character)
++ save() : Character
++ restoreToSavedState(character : Character) : void
++ getSave() : Character
++ addSave() : void
++ displayFullCharacterState(character Character) : void
 }
 
 note right {
-- Sets variables using the values
-  in Character and sets Weapon
-  to the copy variables.
-- Also reverses the above to restore objects.
-- Each method requires one parameter
-  -> character.
+- Sets Character details using the copy values
+  in CharacterStateSave.
+- Does the above by creating an instance of character in save method
+- Restores the character by letting copy variables equal whats in the
+  character class variables.
+- Adds the character state to a stack - first in, first out
+- Uses GetSave to take state from the top of the stack and then 'pops'
+  the stack - removes the most recently added state
 }
 
 class WeaponType {
