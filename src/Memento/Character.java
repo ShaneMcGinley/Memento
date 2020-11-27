@@ -47,7 +47,6 @@ public class Character {
         this.weaponName = weaponName;
     }
 
-
     public Character(String name, int expLevel, String location, String weaponName, String weaponType) {
         this.name = name;
         this.expLevel = expLevel;

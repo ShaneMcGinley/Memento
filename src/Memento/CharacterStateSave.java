@@ -1,19 +1,22 @@
 package Memento;
 
+import java.util.ArrayDeque;
+
 public class CharacterStateSave {
 
+    ArrayDeque<Character> saves = new ArrayDeque<>();
     private String nameCopy;
     private int expLevelCopy;
     private String locationCopy;
     private String weaponNameCopy;
-    private String weaponType;
+    private String weaponTypeCopy;
 
-    public String getWeaponType() {
-        return weaponType;
+    public String getWeaponTypeCopy() {
+        return weaponTypeCopy;
     }
 
-    public void setWeaponType(String weaponType) {
-        this.weaponType = weaponType;
+    public void setWeaponTypeCopy(String weaponTypeCopy) {
+        this.weaponTypeCopy = weaponTypeCopy;
     }
 
     public String getWeaponNameCopy() {
@@ -48,36 +51,34 @@ public class CharacterStateSave {
         this.locationCopy = locationCopy;
     }
 
-    public void save(Character character){
-        System.out.println("Saving Game\n");
-        setNameCopy(character.getName());
-        setExpLevelCopy(character.getExpLevel());
-        setLocationCopy(character.getLocation());
-        setWeaponNameCopy(character.getWeaponName());
-        setWeaponType(character.getWeaponType());
-    }
-
-    public void saveCharacterState(Character character){
-        System.out.println("Saving Current Character State\n");
-        setNameCopy(character.getName());
-        setExpLevelCopy(character.getExpLevel());
-        setLocationCopy(character.getLocation());
-        setWeaponNameCopy(character.getWeaponName());
-        setWeaponType(character.getWeaponType());
+    public Character save(){
+        System.out.println("Saving Character Details...\n");
+        Character character = new Character(nameCopy,expLevelCopy,locationCopy,
+                weaponNameCopy,weaponTypeCopy);
+        return character;
     }
 
     public void restoreToPreviousSave(Character character){
-        System.out.println("Your character has died, reloading the last saved checkpoint.\n");
-        character.setName(nameCopy);
-        character.setExpLevel(expLevelCopy);
-        character.setLocation(locationCopy);
-        character.setWeaponName(weaponNameCopy);
-        character.setWeaponType(weaponType);
+        System.out.println("Getting Last Save / Reversing the save once...\n");
+        nameCopy = character.getName();
+        expLevelCopy = character.getExpLevel();
+        locationCopy = character.getLocation();
+        weaponNameCopy = character.getWeaponName();
+        weaponTypeCopy = character.getWeaponType();
+    }
+
+    public Character getSave() {
+        Character character = saves.pop();
+        return character;
+    }
+
+    public void addSave(Character character) {
+        saves.push(character);
     }
 
     public void displayCharacterState(Character character){
         System.out.println("Character Details: \nPlayer Name: " + character.getName()
-                + "\nExperience Level: " + character.getExpLevel() + "\nSave Location: "
+                + "\nExperience Level: " + character.getExpLevel() + "\nLocation: "
                 + character.getLocation() + "\nWeapon Name: " + character.getWeaponName()
                 + "\nWeapon Type: " + character.getWeaponType() +"\n");
     }
