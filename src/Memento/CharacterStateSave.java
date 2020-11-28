@@ -4,16 +4,14 @@ import java.util.ArrayDeque;
 
 public class CharacterStateSave {
 
-    ArrayDeque<Character> saves = new ArrayDeque<>();
+    public ArrayDeque<Character> saves = new ArrayDeque<>();
     private String nameCopy;
     private int expLevelCopy;
     private String locationCopy;
     private String weaponNameCopy;
     private String weaponTypeCopy;
 
-    public String getWeaponTypeCopy() {
-        return weaponTypeCopy;
-    }
+    public String getWeaponTypeCopy() { return weaponTypeCopy; }
 
     public void setWeaponTypeCopy(String weaponTypeCopy) {
         this.weaponTypeCopy = weaponTypeCopy;
