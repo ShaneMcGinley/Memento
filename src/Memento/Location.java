@@ -5,7 +5,7 @@ public enum Location {
     WINDHELM,
     WHITERUN,
     KINGS_LANDING,
-    WINTERFELD;
+    WINTERFELL;
 
     @Override
     public String toString(){
@@ -18,7 +18,7 @@ public enum Location {
                 return "Whiterun";
             case KINGS_LANDING:
                 return "King's Landing";
-            case WINTERFELD:
+            case WINTERFELL:
                 return "Winterfell";
             default:
                 return "Winterhold";

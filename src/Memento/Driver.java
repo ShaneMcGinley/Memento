@@ -4,59 +4,53 @@ public class Driver {
     public static void main(String[] args) {
 
         // Creating new instances
-        CharacterStateSave characterStateSave = new CharacterStateSave();
-        WeaponType weaponType = new WeaponType();
-        Location location = new Location();
+        CharacterStateSave characterStateSave = new CharacterStateSave("Johnny",
+                1,Location.WINTERFELL,"MP5",WeaponType.SUBMACHINE_GUN);
+        CharacterCaretaker characterCaretaker = new CharacterCaretaker();
 
-        // Setting the initial values - setters
-        characterStateSave.setNameCopy("Johnny");
-        characterStateSave.setExpLevelCopy(1);
-        characterStateSave.setLocationCopy(location.WF);
-        characterStateSave.setWeaponNameCopy("MP5");
-        characterStateSave.setWeaponTypeCopy(weaponType.SUBMACHINEGUN);
+        // Updating the values via the setters
+        characterStateSave.setName("Johnny");
+        characterStateSave.setExpLevel(1);
+        characterStateSave.setLocation(Location.WINTERFELL);
+        characterStateSave.setWeaponName("MP5");
+        characterStateSave.setWeaponType(WeaponType.SUBMACHINE_GUN);
 
-        // Creating new Character variable.
-        // letting it equal save method - creates new Character instance and passes its variables.
-        Character player1 = characterStateSave.save();
+        /* pushes the characterStateSave's save method into the deque (stack)*/
+        characterCaretaker.addSave(characterStateSave.save());
+
+        characterStateSave.displayCharacterState();
+
         // adding it to the stack.
-        characterStateSave.addSave(player1);
-        // displaying current details in character.
-        characterStateSave.displayCharacterState(player1);
-
+        // displaying current details.
         // Updating character details in the save class.
-        characterStateSave.setNameCopy("Johnny");
-        characterStateSave.setExpLevelCopy(2);
-        characterStateSave.setLocationCopy(location.KL);
-        characterStateSave.setWeaponNameCopy("Remington 870");
-        characterStateSave.setWeaponTypeCopy(weaponType.SHOTGUN);
+        characterStateSave.setName("Johnny");
+        characterStateSave.setExpLevel(2);
+        characterStateSave.setLocation(Location.KINGS_LANDING);
+        characterStateSave.setWeaponName("Remington 870");
+        characterStateSave.setWeaponType(WeaponType.SHOTGUN);
 
         // same as above..
-        player1 = characterStateSave.save();
-        characterStateSave.addSave(player1);
-        characterStateSave.displayCharacterState(player1);
+        characterCaretaker.addSave(characterStateSave.save());
+        characterStateSave.displayCharacterState();
 
-        characterStateSave.setExpLevelCopy(3);
-        characterStateSave.setLocationCopy(location.WHD);
+        characterStateSave.setExpLevel(3);
+        characterStateSave.setLocation(Location.WINTERHOLD);
 
-        player1 = characterStateSave.save();
-        characterStateSave.addSave(player1);
-        characterStateSave.displayCharacterState(player1);
+        characterCaretaker.addSave(characterStateSave.save());
+        characterStateSave.displayCharacterState();
 
-        player1 = characterStateSave.getSave();
+        characterStateSave.restoreToPreviousSave(characterCaretaker.getSave());
 
-        characterStateSave.restoreToPreviousSave(player1);
+        characterStateSave.displayCharacterState();
 
-        characterStateSave.displayCharacterState(player1);
+        characterStateSave.restoreToPreviousSave(characterCaretaker.getSave());
 
-        player1 = characterStateSave.getSave();
+        characterStateSave.displayCharacterState();
 
-        characterStateSave.restoreToPreviousSave(player1);
+        characterStateSave.restoreToPreviousSave(characterCaretaker.getSave());
 
-        characterStateSave.displayCharacterState(player1);
-
-        player1 = characterStateSave.getSave();
-        characterStateSave.restoreToPreviousSave(player1);
-        characterStateSave.displayCharacterState(player1);
+        characterStateSave.displayCharacterState();
     }
 }
+
 
