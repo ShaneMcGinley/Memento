@@ -4,59 +4,85 @@ skinparam classAttributeIconSize 0
 class Character {
 - name : String
 - expLevel : int
-- location : String
+- location : Location
 - weaponName : String
 - weaponType : WeaponType
+}
 
+note top {
+<b>MEMENTO</b>
 }
 
 class CharacterStateSave {
-- nameCopy : String
-- expLevelCopy : int
-- locationCopy : String
-- weaponNameCopy : String
-- weaponTypeCopy : WeaponType
-+ saves : ArrayDeque<Character>
-
-+ save() : Character
-+ restoreToSavedState(character : Character) : void
-+ getSave() : Character
-+ addSave() : void
-+ displayFullCharacterState(character Character) : void
+- name : String
+- expLevel : int
+- location : Location
+- weaponName : String
+- weaponType : WeaponType
 }
 
 note right {
-- Sets Character details using the copy values
+  <b>ORIGINATOR:</b>
+- Sets Character details using the variables
   in CharacterStateSave.
 - Does the above by creating an instance of character in save method
 - Restores the character by letting copy variables equal whats in the
   character class variables.
-- Adds the character state to a stack - first in, first out
-- Uses GetSave to take state from the top of the stack and then 'pops'
-  the stack - removes the most recently added state
 }
 
-class WeaponType {
-+ ASSAULT_RIFLE : String
-+ SUBMACHINE_GUN : String
-+ SNIPER_RIFLE : String
-+ SHOTGUN : String
-+ KNIFE : String
+interface Memento {
++ getName()
++ getExpLevel()
++ getLocation()
++ getWeaponName()
++ getWeaponType()
 }
 
-class Location {
-+ WHD : String
-+ WHM : String
-+ WRN : String
-+ KL : String
-+ WF : String
+class CharacterCaretaker {
+saves : Deque<Character>
+
++ getSave() : Character
++ addSave() : void
 }
 
-note right {
-- Final String for each
-  Location.
+note top {
+<b>CARETAKER:</b>
+- Adds the character state to
+  a stack - first in, first out
+- Uses GetSave to take state from
+  the top of the stack and then 'pops'
+  the stack - removes the
+  most recently added state
 }
 
-Character <|.. CharacterStateSave : uses
+interface Originator {
++ save() : Character
++ restoreToPreviousSave(Character character) : void
++ displayCharacterState() : void
+}
 
+enum WeaponType {
+ASSAULT_RIFLE
+SUBMACHINE_GUN
+SNIPER_RIFLE
+SHOTGUN
+KNIFE
+}
+
+enum Location {
+WINTERHOLD
+WINDHELM
+WHITERUN
+KINGS_LANDING
+WINTERFELD
+}
+
+Character <|-- CharacterStateSave : uses
+WeaponType <|- Character : uses
+WeaponType <|- CharacterStateSave : uses
+Location <|- Character : uses
+Location <|- CharacterStateSave : uses
+CharacterCaretaker o--|> Character : uses
+Originator <|.. CharacterStateSave : implements
+Memento <|.. Character : implements
 @enduml
