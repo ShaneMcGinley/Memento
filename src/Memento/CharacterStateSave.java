@@ -5,64 +5,72 @@ import java.util.ArrayDeque;
 public class CharacterStateSave {
 
     public ArrayDeque<Character> saves = new ArrayDeque<>();
-    private String nameCopy;
-    private int expLevelCopy;
-    private String locationCopy;
-    private String weaponNameCopy;
-    private String weaponTypeCopy;
+    private String name;
+    private int expLevel;
+    private Location location;
+    private String weaponName;
+    private WeaponType weaponType;
 
-    public String getWeaponTypeCopy() { return weaponTypeCopy; }
+    public WeaponType getWeaponType() { return weaponType; }
 
-    public void setWeaponTypeCopy(String weaponTypeCopy) {
-        this.weaponTypeCopy = weaponTypeCopy;
+    public void setWeaponType(WeaponType weaponType) {
+        this.weaponType = weaponType;
     }
 
-    public String getWeaponNameCopy() {
-        return weaponNameCopy;
+    public String getWeaponName() {
+        return weaponName;
     }
 
-    public void setWeaponNameCopy(String weaponNameCopy) {
-        this.weaponNameCopy = weaponNameCopy;
+    public void setWeaponName(String weaponName) {
+        this.weaponName = weaponName;
     }
 
-    public String getNameCopy() {
-        return nameCopy;
+    public String getName() {
+        return name;
     }
 
-    public void setNameCopy(String nameCopy) {
-        this.nameCopy = nameCopy;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getExpLevelCopy() {
-        return expLevelCopy;
+    public int getExpLevel() {
+        return expLevel;
     }
 
-    public void setExpLevelCopy(int expLevelCopy) {
-        this.expLevelCopy = expLevelCopy;
+    public void setExpLevel(int expLevel) {
+        this.expLevel = expLevel;
     }
 
-    public String getLocationCopy() {
-        return locationCopy;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setLocationCopy(String locationCopy) {
-        this.locationCopy = locationCopy;
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public CharacterStateSave(String name, int expLevel, Location location, String weaponName, WeaponType weaponType) {
+        this.name = name;
+        this.expLevel = expLevel;
+        this.location = location;
+        this.weaponName = weaponName;
+        this.weaponType = weaponType;
     }
 
     public Character save(){
         System.out.println("Saving Character Details...\n");
-        Character character = new Character(nameCopy,expLevelCopy,locationCopy,
-                weaponNameCopy,weaponTypeCopy);
+        Character character = new Character(name,expLevel,location,
+                weaponName,weaponType);
         return character;
     }
 
     public void restoreToPreviousSave(Character character){
         System.out.println("Getting Last Save / Reversing the save once...\n");
-        nameCopy = character.getName();
-        expLevelCopy = character.getExpLevel();
-        locationCopy = character.getLocation();
-        weaponNameCopy = character.getWeaponName();
-        weaponTypeCopy = character.getWeaponType();
+        name = character.getName();
+        expLevel = character.getExpLevel();
+        location = character.getLocation();
+        weaponName = character.getWeaponName();
+        weaponType = character.getWeaponType();
     }
 
     public Character getSave() {
