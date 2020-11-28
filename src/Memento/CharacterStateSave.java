@@ -4,7 +4,6 @@ import java.util.ArrayDeque;
 
 public class CharacterStateSave {
 
-    public ArrayDeque<Character> saves = new ArrayDeque<>();
     private String name;
     private int expLevel;
     private Location location;
@@ -71,15 +70,6 @@ public class CharacterStateSave {
         location = character.getLocation();
         weaponName = character.getWeaponName();
         weaponType = character.getWeaponType();
-    }
-
-    public Character getSave() {
-        Character character = saves.pop();
-        return character;
-    }
-
-    public void addSave(Character character) {
-        saves.push(character);
     }
 
     public void displayCharacterState(Character character){
