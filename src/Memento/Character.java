@@ -1,23 +1,17 @@
 package Memento;
 
-public class Character {
+public class Character implements Memento{
     private String name;
     private int expLevel;
-    private String location;
+    private Location location;
     private String weaponName;
-    private String weaponType;
+    private WeaponType weaponType;
 
-    public String getWeaponType() {
-        return weaponType;
-    }
+    public WeaponType getWeaponType() { return weaponType; }
 
-    public void setWeaponType(String weaponType) {
-        this.weaponType = weaponType;
-    }
+    public void setWeaponType(WeaponType weaponType) { this.weaponType = weaponType; }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
     public void setName(String name) {
         this.name = name;
@@ -31,11 +25,11 @@ public class Character {
         this.expLevel = expLevel;
     }
 
-    public String getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
 
@@ -47,7 +41,7 @@ public class Character {
         this.weaponName = weaponName;
     }
 
-    public Character(String name, int expLevel, String location, String weaponName, String weaponType) {
+    public Character(String name, int expLevel, Location location, String weaponName, WeaponType weaponType) {
         this.name = name;
         this.expLevel = expLevel;
         this.location = location;
