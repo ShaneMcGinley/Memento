@@ -1,8 +1,6 @@
 package Memento;
 
-import java.util.ArrayDeque;
-
-public class CharacterStateSave {
+public class CharacterStateSave implements Originator{
 
     private String name;
     private int expLevel;
@@ -56,6 +54,7 @@ public class CharacterStateSave {
         this.weaponType = weaponType;
     }
 
+    @Override
     public Character save(){
         System.out.println("Saving Character Details...\n");
         Character character = new Character(name,expLevel,location,
@@ -63,6 +62,7 @@ public class CharacterStateSave {
         return character;
     }
 
+    @Override
     public void restoreToPreviousSave(Character character){
         System.out.println("Getting Last Save / Reversing the save once...\n");
         name = character.getName();
@@ -72,10 +72,11 @@ public class CharacterStateSave {
         weaponType = character.getWeaponType();
     }
 
-    public void displayCharacterState(Character character){
-        System.out.println("Character Details: \nPlayer Name: " + character.getName()
-                + "\nExperience Level: " + character.getExpLevel() + "\nLocation: "
-                + character.getLocation() + "\nWeapon Name: " + character.getWeaponName()
-                + "\nWeapon Type: " + character.getWeaponType() +"\n");
+    @Override
+    public void displayCharacterState(){
+        System.out.println("Character Details: \nPlayer Name: " + name
+                + "\nExperience Level: " + expLevel + "\nLocation: "
+                + location + "\nWeapon Name: " + weaponName
+                + "\nWeapon Type: " + weaponType +"\n");
     }
 }
