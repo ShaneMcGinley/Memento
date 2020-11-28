@@ -1,9 +1,27 @@
 package Memento;
 
-public class Location {
-    public final String WHD = "Winterhold";
-    public final String WHM = "Windhelm";
-    public final String WRN = "Whiterun";
-    public final String KL = "King's Landing";
-    public final String WF = "Winterfell";
+public enum Location {
+    WINTERHOLD,
+    WINDHELM,
+    WHITERUN,
+    KINGS_LANDING,
+    WINTERFELD;
+
+    @Override
+    public String toString(){
+        switch(this) {
+            case WINTERHOLD:
+                return "Winterhold";
+            case WINDHELM:
+                return "Windhelm";
+            case WHITERUN:
+                return "Whiterun";
+            case KINGS_LANDING:
+                return "King's Landing";
+            case WINTERFELD:
+                return "Winterfell";
+            default:
+                return "Winterhold";
+        }
+    }
 }

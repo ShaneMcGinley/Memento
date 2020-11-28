@@ -1,9 +1,27 @@
 package Memento;
 
-public class WeaponType {
-    public final String SNIPER_RIFLE = "Sniper Rifle";
-    public final String ASSAULT_RIFLE = "Assault Rifle";
-    public final String SUBMACHINEGUN = "Submachine Gun";
-    public final String SHOTGUN = "Shotgun";
-    public final String KNIFE = "Knife";
+public enum WeaponType {
+    ASSAULT_RIFLE,
+    SUBMACHINE_GUN,
+    SNIPER_RIFLE,
+    SHOTGUN,
+    KNIFE;
+
+    @Override
+    public String toString(){
+        switch(this) {
+            case ASSAULT_RIFLE:
+                return "Assault Rifle";
+            case SUBMACHINE_GUN:
+                return "Submachine Gun";
+            case SNIPER_RIFLE:
+                return "Sniper Rifle";
+            case SHOTGUN:
+                return "Shotgun";
+            case KNIFE:
+                return "Knife";
+            default:
+                return "none";
+        }
+    }
 }
