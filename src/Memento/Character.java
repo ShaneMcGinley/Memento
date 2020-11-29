@@ -7,16 +7,19 @@ public class Character implements Memento{
     private String weaponName;
     private WeaponType weaponType;
 
+    @Override
     public WeaponType getWeaponType() { return weaponType; }
 
     public void setWeaponType(WeaponType weaponType) { this.weaponType = weaponType; }
 
+    @Override
     public String getName() { return name; }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    @Override
     public int getExpLevel() {
         return expLevel;
     }
@@ -25,6 +28,7 @@ public class Character implements Memento{
         this.expLevel = expLevel;
     }
 
+    @Override
     public Location getLocation() {
         return location;
     }
@@ -33,6 +37,7 @@ public class Character implements Memento{
         this.location = location;
     }
 
+    @Override
     public String getWeaponName() {
         return weaponName;
     }
